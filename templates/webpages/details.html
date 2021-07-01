@@ -1,0 +1,135 @@
+{% extends 'webpages/base.html'%}
+{% load static %}
+
+{% block content %}
+<section class="head container mt-5 mb-5">
+      <div class="row">
+        <div class="col-md-4 d-flex justify-content-center align-items-center">
+          <h1 class="text-center">{{card.heading}}</h1>
+        </div>
+        <div class="col-md-4 d-flex justify-content-center align-items-center">
+          <h1 class="text-accent text-center">
+            {{card.date}}
+          </h1>
+        </div>
+       
+      </div>
+    </section>
+    <section class="video container text-center">
+       <img src="{{card.photo.url}}" class="img-fluid" alt="team-member">
+    </section>
+
+
+    </div>
+ 
+    <section class="descritpion container">
+      <h4>Descritpion</h4>
+      <p class="mt-2 mb-2">{{card.description | safe}}</p>
+
+      <p id="a">{{total_likes}}   Likes</p>
+      <p>    <form  method="post" action="{% url 'like_post' %}">
+        {% csrf_token %}
+   
+   {% if is_liked %}
+    
+    <button type="submit" value="{{card.id}}"  class="btn btn-danger" name="post_id">Dislike</button>
+{% else %} 
+<button type="submit" value="{{card.id}}"  class="btn btn-primary" name="post_id">Like</button>    
+{% endif %}
+</form>
+      </p>
+
+
+    </section>
+
+    <section class="container w-50">
+
+      
+      
+
+    </section>
+    <br>
+    <br>
+  
+    <div class="container">
+        <div class="row bootstrap snippets bootdeys">
+            <div class="col-md-8 col-sm-12">
+                <div class="comment-wrapper">
+                    <div class="panel panel-info">
+                        <div class="panel-heading">
+                            Comment panel
+                        </div>
+                        <div class="panel-body">
+                            <form  method="post">
+                                {% csrf_token %}
+                            <textarea class="form-control" placeholder="write a comment..." rows="3" name="content"></textarea>
+                            <br>
+                            {% if request.user.is_authenticated %}
+                            <input type="submit" value="Submit" class="btn btn-success">
+                            {% else %}
+                            <input type="submit" value="Submit" class="btn btn-success" disabled>
+                            {% endif %}
+                        </form>
+                            <div class="clearfix"></div>
+                            <hr>
+                          
+                            <ul class="media-list">
+                                {{comments.count}} Comment{{comments|pluralize}}
+                                {% for c in comments %}
+                                <li class="media">
+                                    <a href="#" class="pull-left">
+                                        <img src="https://bootdey.com/img/Content/user_1.jpg" alt="" class="img-circle">
+                                    </a>
+                                    <div class="media-body">
+                                        <span class="text-muted pull-right">
+                                            <small class="text-muted">{{c.date}}</small>
+                                        </span>
+                                        <strong class="text-success">@{{c.user|capfirst}}</strong>
+                                        <p id="abc">
+                                            {{c.content}}
+                                        </p>
+                                    </div>
+                                </li>
+                                {% endfor %}
+
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+        
+            </div>
+        </div>
+        </div>
+        <style>
+            body{margin-top:20px;}
+#a{
+    font-weight: bolder;
+    margin-top: 5px;
+}
+.comment-wrapper .panel-body {
+    max-height:100%;
+   width: 800px;
+}
+
+.comment-wrapper .media-list .media img {
+    width:64px;
+    height:64px;
+    border:2px solid #e5e7e8;
+}
+
+.comment-wrapper .media-list .media {
+    border-bottom:1px dashed #efefef;
+    margin-bottom:25px;
+}
+@media screen and (max-width: 480px) {
+    .comment-wrapper .panel-body {
+        max-height:100%;
+       width: 300px;
+    }
+#abc{
+    margin-left: 5px;
+}
+
+}
+        </style>
+{% endblock %}

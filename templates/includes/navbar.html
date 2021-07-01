@@ -1,0 +1,45 @@
+ {% load static %}
+ <nav class="navbar navbar-expand-lg navbar-dark bg-dark " id="nav">
+    <div class="container">
+      <a class="navbar-brand" href="/index.html">
+        <img src="{% static './assets/images/logo1.png' %}" alt="" width="140" height="30" alt="" loading="lazy">
+      </a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item active">
+            <a class="nav-link" href="{% url 'home'%}">Home</a>
+          </li>
+          <li class="nav-item active">
+            <a class="nav-link" href="{% url 'search'%}">check avalability</a>
+          </li>
+           <li class="nav-item active">
+            <a class="nav-link" href="{% url 'check'%}">seek request</a>
+          </li>
+           <li class="nav-item active">
+            <a class="nav-link" href="{% url 'dashboard'%}">Dashboard</a>
+          </li>
+<li class="nav-item active">
+            <a class="nav-link" href="{% url 'about'%}">About us</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+<style>
+a{
+  font-family: sans-serif;
+}
+
+@media screen and (max-width: 990px)
+{
+img{
+  margin-bottom: 50px;
+}
+
+}
+</style>

@@ -1,0 +1,124 @@
+
+{% load static %}
+
+{% block content %}
+
+
+  <main class="contact-us">
+    <div class="banner">
+      <img src="{% static './assets/images/slide5.jpg' %}" alt="" class="img-fluid w-100">
+      <h1 class="text-center" id="heading" style="color: black;">
+        College Magazine
+      </h1>
+    </div>
+    <section class="container mt-5 mb-5">
+      <div id="pot">
+        <img src="https://i.stack.imgur.com/qgNyF.png?s=328&g=1" width=100px height=100px>
+      </div> 
+      <div class="col-md-4 offset-md-4">
+        {% include 'accounts/messages.html'%}
+            
+            </div>   
+    {% for b in magz %}
+      <div class="row mt-5"  id="ab">
+        <div class="col-md-4">
+         <a href="{% url 'details' b.id %}"> <img src="{{ b.photo.url }}" alt="" class="img-fluid" ></a>
+        </div>
+        <div class="col-md-8 animate__animated animate__fadeInRight">
+          <h2 class="text-center" id="a">EVENT:{{ b.heading }}</h2>
+          <h5 class="text-center">{{ b.date }} {{b.name}}</h5>
+          <p>
+          {{ b.description }}
+          <a href="{%  url 'details' b.id  %}"><input type="submit" value="Like" class="btn btn-primary"></a>
+          <a href="{%  url 'details' b.id  %}"><input type="submit" value="comment" class="btn btn-success"></a>
+          
+          </p>
+       
+        </div>
+      </div>
+      {% endfor %}
+     
+    </section>
+    
+
+
+  </main>
+{% endblock %}
+<style>
+
+  #heading {
+    margin: 1em 0 0.5em 0;
+    color: whitesmoke;
+    font-weight: normal;
+    font-family: 'Ultra', sans-serif;   
+    font-size: 36px;
+    line-height: 42px;
+    text-transform: uppercase;
+    text-shadow: 0 2px white, 0 3px #777;
+  }
+
+  #pot {
+    bottom: 15%;
+    position: absolute;
+    -webkit-animation: linear infinite;
+    -webkit-animation-name: run;
+    -webkit-animation-duration: 5s;
+  }
+  @-webkit-keyframes run {
+    0% {
+      left: 0;
+    }
+    50% {
+      left: 100%;
+    }
+    100% {
+      left: 0;    
+    }
+  }
+   #ab img:hover {
+    animation: shake 0.5s;
+    animation-iteration-count: infinite;
+  }
+  #ab img{
+ 
+  height: 300px;
+     margin-top: 120px;
+      border:2px solid #fff;
+      background: url(img/tiger.png) no-repeat;
+      box-shadow: 10px 10px 5px #ccc;
+      -moz-box-shadow: 10px 10px 5px #ccc;
+      -webkit-box-shadow: 10px 10px 5px #ccc;
+      -khtml-box-shadow: 10px 10px 5px #ccc;
+    
+  }
+  @keyframes shake {
+    0% { transform: translate(1px, 1px) rotate(0deg); }
+    10% { transform: translate(-1px, -2px) rotate(-1deg); }
+    20% { transform: translate(-3px, 0px) rotate(1deg); }
+    30% { transform: translate(3px, 2px) rotate(0deg); }
+    40% { transform: translate(1px, -1px) rotate(1deg); }
+    50% { transform: translate(-1px, 2px) rotate(-1deg); }
+    60% { transform: translate(-3px, 1px) rotate(0deg); }
+    70% { transform: translate(3px, 1px) rotate(-1deg); }
+    80% { transform: translate(-1px, -1px) rotate(1deg); }
+    90% { transform: translate(1px, 2px) rotate(0deg); }
+    100% { transform: translate(1px, -2px) rotate(-1deg); }
+  }  
+  #a{
+    margin: 1em 0 0.5em 0;
+    color: whitesmoke;
+    font-weight: normal;
+    font-family: 'Ultra', sans-serif;   
+    font-size: 36px;
+    line-height: 42px;
+    text-transform: uppercase;
+    text-shadow: 0 2px white, 0 3px #777;
+  }
+  p{
+    font-family: sans-serif;
+  }
+  .banner img{
+    backdrop-filter: blur(3px);
+  }
+
+</style>

@@ -1,0 +1,99 @@
+{% extends 'webpages/base.html' %}
+{% load static %}
+
+{% block content %}
+
+  <main class="about-us">
+    <div class="banner">
+      <img src="{% static './assets/images/slide0.jpg' %}" alt="" class="img-fluid w-100" style="opacity: 70%;">
+      <h1 class="text-center" style="color: black; ">
+        check avalibility
+      </h1>
+    </div>
+    <h2 class="text-center mt-5 mb-2  animate__animated animate__flipInX animate__slow	">
+      Get in touch with Our Team
+    </h2>
+    <p class="text-center mb-3  animate__animated animate__flipInX animate__delay-1s">
+      Fill the form below and we will get in touch asap
+    </p>
+
+    <section class="container mt-5">
+      <div class="row ">
+        <div class="col-md-6 mb-2 ">
+                <form method="POST" enctype="multipart/form-data">
+                  {% csrf_token %}
+                  <div class="form-row">
+                    <div class="form-group col-lg-6">
+                      <input name="name1" type="text" class="form-control" placeholder="fullname">
+                    </div>
+                    <div class="form-group col-lg-6">
+                      <input name="branch" type="text" class="form-control" placeholder="yeear/branch/section">
+                    </div>
+                  </div>
+                  <div class="form-row">
+                    <div class="form-group col-lg-6">
+                      <input  name="email" type="email" class="form-control" placeholder="email">
+                    </div>
+                    <div class="form-group col-lg-6">
+                      <input  name="phonenumber" type="text" class="form-control" placeholder="phonenumber">
+                    </div>
+                    
+                  </div>
+                   <div class="form-group">
+                    <input name="need" type="text" class="form-control" placeholder="where you want to conduct">
+                  </div>
+                  <div class="form-group">
+                    <input name="date" type="text" class="form-control" placeholder="DD//MM//YY">
+                  </div>
+                  <div class="form-group">
+                    <input name="subject" type="text" class="form-control" placeholder="no of people">
+                  </div>
+                  <div class="form-group pt-2">
+                    <textarea name="details"  class="form-control" rows="3" placeholder="Detailed Message"></textarea>
+                  </div>
+                       <div class="form-group pt-2">
+    <label for="exampleFormControlFile1">add your letter as image</label>
+    <input type="file" name="photo" class="form-control-file" >
+  </div>
+                  <div class="text-center">
+                    <button type="submit" class="btn btn-accent">post</button>
+                  </div>
+      
+                </form>
+        </div>
+  
+
+        <div class="col-md-4 offset-md-2 d-flex justify-content-center mb-2">
+          <div class="card">
+            <div class="card-body">
+              <div class="mb-4">
+                <h6 class="card-title font-weight-bolder">instructions</h6>
+                <span class="card-text">fill your deatils properly</span>
+                <span class="card-text">After posting till 24hours to check in dashboard<span>
+              </div>
+              <div class="mb-4">
+                <h6 class="card-title font-weight-bolder">Any problems</h6>
+                <span class="card-text">contact us</span>
+              </div>
+              <div class="mb-4">
+                <h6 class="card-title font-weight-bolder">warning</h6>
+                <span class="card-text">these website is controlled by HODs so dont misuse it</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+
+
+
+
+
+
+{% endblock %}
+            <div class="form-group pt-2">
+    <label for="exampleFormControlFile1">add your letter as image</label>
+    <input type="file" name="photo" class="form-control-file" id="exampleFormControlFile1">
+  </div>
